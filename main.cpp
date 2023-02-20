@@ -1,7 +1,14 @@
-#include <iostream>
+#include "src/webserv.hpp"
 
-int main()
+#include "src/Configfile/Configuration.hpp"
+int main(int argc, char **argv)
 {
-    std::cout<<"im fine bro"<<std::endl;
-    return (0);
+    if (argc != 2)
+        exit(1);
+    Webserv myserver(8080, 5);
+    if (-1 == myserver.init_server())
+        return 1;
+    myserver.run_server();
+
+    return 0;
 }
