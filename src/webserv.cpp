@@ -116,21 +116,22 @@ int Webserv::run_server()
                 {
                     recv(fd, client_msg, 4095, 0);
 
-                    std::cout << "===============================\n\n"
-                              << std::endl;
-                    std::cout << client_msg << std::endl;
+                    std::cout<<"===============================\n\n"<<std::endl;
+                    std::cout<<client_msg<<std::endl;
 
                     for (int fd2 = 0; fd2 <= this->max_fd; fd2++)
                     {
                         if (FD_ISSET(fd2, &this->stes_write))
-                                send(fd2, response.c_str(), response.length(), 0);
-                        printf("====> %d | %d\n", fd, fd2);
-                        close(fd2);
-                        FD_CLR(fd2, &this->stes_write);
+                        {
+                            send(fd2, response.c_str(), response.length(), 0);
+                            printf("====> %d | %d\n", fd, fd2);
+                            close(fd2);
+                            FD_CLR(fd2, &this->stes_write);
+                        }
                     }
+                    close(fd);
+                    FD_CLR(fd, &this->stes_read);
                 }
-                close(fd);
-                FD_CLR(fd, &this->stes_read);
             }
         }
     }
