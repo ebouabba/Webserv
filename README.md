@@ -31,4 +31,26 @@ Accept-Language: header indicates the language and optionally the locale that th
 Content-type: header indicates the type of content being transmitted in the request body.
 
 # HTTP Request Body
+HTTP requests can optionally include a request body. A request body is often included when using the HTTP POST and PUT methods to transmit data.
+
+    POST /users HTTP/1.1
+    Host: example.com
+    {
+        "key1":"value1",
+        "key2":"value2",
+        "array1":["value3","value4"]
+    }
+
+    PUT /users/1 HTTP/1.1
+    Host: example.com
+    Content-type: text/json
+    {
+        "key1":"value1"
+    }
+
+# HTTP Responses
+When the web server is finished processing the HTTP request, it will send back an HTTP response.
+The first line of the response is the status line. This line shows the client if the request was successful or if an error occurred.
+THE first line : HTTP/1.1 200 OK 
+The line begins with the HTTP protocol version, followed by the status code and a reason phrase. The reason phrase is a textual representation of the status code.
 
