@@ -51,6 +51,8 @@ HTTP requests can optionally include a request body. A request body is often inc
 # HTTP Responses
 When the web server is finished processing the HTTP request, it will send back an HTTP response.
 The first line of the response is the status line. This line shows the client if the request was successful or if an error occurred.
-HTTP/1.1 200 OK 
+
+HTTP/1.1 200 OK
+
 The line begins with the HTTP protocol version, followed by the status code and a reason phrase. The reason phrase is a textual representation of the status code.
 
