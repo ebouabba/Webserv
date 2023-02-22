@@ -1,5 +1,5 @@
 # WEBSERV
-![Screenshot](https://webserv.io/wp-content/uploads/2022/11/Social-Share.jpg)
+![Screenshot](https://miro.medium.com/v2/resize:fit:720/format:webp/1*AwGI1e13BoLvUd2wThmSLw.jpeg)
 HTTP server in C++98
 
 socket : Socket Programming is a method to connect two nodes over a network to establish a means of communication between those two nodes. A node represents a computer or a physical device with an internet connection. A socket is the endpoint used for connecting to a node. The signals required to implement the connection between two nodes are sent and received using the sockets on each node respectively.
