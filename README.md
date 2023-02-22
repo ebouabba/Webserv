@@ -15,3 +15,20 @@ HTTP 1.1: s the protocol used
 HTTP methods:HTTP methods indicate the action that the client wishes to perform on the web server  
 
 # HTTP Request Headers
+There are various possibilities when including an HTTP header in the HTTP request.
+A header is a case-insensitive name followed by a: and then followed by a value.
+Example : 
+    Host: example.com
+    User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.9; rv:50.0) Gecko/20100101 Firefox/50.0
+    Accept: */*
+    Accept-Language: en
+    Content-type: text/json
+
+Host: header specifies the host of the server and indicates where the resource is requested from.
+User-Agent: header informs the web server of the application that is making the request. It often includes.
+Accept: header informs the web server what type of content the client will accept as the response.
+Accept-Language: header indicates the language and optionally the locale that the client prefers.
+Content-type: header indicates the type of content being transmitted in the request body.
+
+# HTTP Request Body
+
