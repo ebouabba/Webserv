@@ -66,3 +66,10 @@ The line begins with the HTTP protocol version, followed by the status code and 
 
 To display the page, browser fetches the file index.html from a web server.
 
+- These 3 Headers are minimum required :
+
+HTTP/1.1 200 OK -> This mentions what version of HTTP we are using, Status code and Status message.
+
+Content-Type: text/plain -> This says that I’m (server) sending a plain text. There are many Content-Types. For example, for images we use this.
+
+Content-Length: 12 -> It mentions how many bytes the server is sending to the client. The web-browser only reads how much we mention here.
