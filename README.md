@@ -56,3 +56,7 @@ HTTP/1.1 200 OK
 
 The line begins with the HTTP protocol version, followed by the status code and a reason phrase. The reason phrase is a textual representation of the status code.
 
+![Screenshot](https://miro.medium.com/v2/resize:fit:640/format:webp/1*JSnJtHpU7cWUnWIgGupu7w.png)
+
+- Initially HTTP Client(i.e., web browser) sends a HTTP request to the HTTP Server.
+- Server processes the request received and sends HTTP response to the HTTP client.
