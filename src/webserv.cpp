@@ -1,5 +1,8 @@
 #include "../src/webserv.hpp"
 
+#include "response/Response.hpp"
+#include "request/Prasing_Request.hpp"
+
 /////////////////////////////////////
 //      destructor constructor
 /////////////////////////////////////
@@ -117,7 +120,8 @@ int Webserv::run_server()
                     recv(fd, client_msg, 4095, 0);
 
                     std::cout<<"===============================\n\n"<<std::endl;
-                    std::cout<<client_msg<<std::endl;
+                    Prasing_Request request(client_msg);
+                    std::cout<<request.getUrl()<<std::endl;
 
                     for (int fd2 = 0; fd2 <= this->max_fd; fd2++)
                     {

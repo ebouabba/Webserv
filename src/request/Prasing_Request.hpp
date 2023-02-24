@@ -29,5 +29,9 @@ private:
 public:
     int check_first_line(std::string first_line);
     void prasing_headr(std ::string headrs);
+    Prasing_Request(std::string requst);
+    std::string getUrl();
+    std::string getMethode();
+    std::string getBudy_url();
 };
 #endif

@@ -5,6 +5,7 @@
 
 int Prasing_Request::check_first_line(std::string first_line)
 {
+    std::cout<<"-> "<<first_line<<std::endl;
     this->methode = strtok((char *)first_line.c_str(), " ");
     if (this->methode != "GET" && this->methode != "POST" && this->methode != "DELETE")
     {
@@ -14,6 +15,7 @@ int Prasing_Request::check_first_line(std::string first_line)
     }
     char *urlll = strtok(NULL, " ");
     this->url = urlll;
+    std::cout<<this->url<<std::endl;
     if (urlll[0] != '/')
     {
         std ::cout << "400 Bad Request" << std::endl;
@@ -98,4 +100,24 @@ void Prasing_Request::prasing_headr(std ::string headrs)
             return;
         }
     }
+}
+
+Prasing_Request::Prasing_Request(std::string requst)
+{
+    check_first_line(requst.substr(0, requst.find("\n")));
+    // prasing_headr(requst.substr(requst.find("\n", requst.length())));
+    std::cout << this->url << std::endl;
+}
+
+std::string Prasing_Request::getMethode()
+{
+    return (this->methode);
+}
+std::string Prasing_Request::getUrl()
+{
+    return (this->url);
+}
+std::string Prasing_Request::getBudy_url()
+{
+    return (this->budy_url);
 }

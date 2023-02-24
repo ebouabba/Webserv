@@ -1,6 +1,7 @@
 NAME 		= webserv
 SRC_FILE 	= main.cpp src/webserv.cpp src/webserv_util.cpp   src/request/Prasing_Request.cpp\
-			src/Configfile/Configuration.cpp	
+			src/Configfile/Configuration.cpp 
+			#src/response/Response.cpp
 OBJ_FILE	= $(SRC_FILE:.cpp=.o)
 CC			= c++
 CFLAG		=  -std=c++98 #-Wall -Wextra -Werror
