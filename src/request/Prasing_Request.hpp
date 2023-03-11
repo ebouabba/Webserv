@@ -27,11 +27,13 @@ private:
     std ::map<std::string, std::string> mymap;
 
 public:
+    Prasing_Request(std ::string req);
     int check_first_line(std::string first_line);
     void prasing_headr(std ::string headrs);
-    Prasing_Request(std::string requst);
-    std::string getUrl();
-    std::string getMethode();
-    std::string getBudy_url();
+    std::map<std::string,std::string> get_mymap();
+    std :: string get_url();
+    std::string get_method();
+    int get_status();
+    std :: string get_budy_url();
 };
 #endif

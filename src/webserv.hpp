@@ -1,5 +1,6 @@
 #ifndef WEBSERV_HPP
 #define WEBSERV_HPP
+#include "Configfile/Configuration.hpp"
 #include "../src/request/Prasing_Request.hpp"
 //    define variables //
 
@@ -16,11 +17,14 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <arpa/inet.h>
-
+#include <sstream>
+#include <stdlib.h>
 class Webserv
 {
 private:
 public:
+    std::vector<Configuration> confgs;
+    std::map<int , Configuration> server;
     int port;
     int sockfd;
     int backlog; // a maximum pending connections for master socket
@@ -37,15 +41,17 @@ public:
     void setsockfd(int sckfd);
     int getbacklog();
     void setbacklog(int backlog);
-
+    std::vector<Configuration> getConfs();
     //---->  memeber fuction <---\\.
     int init_server();
     int run_server();
     Webserv();
-    Webserv(int prt, int backlg);
+    Webserv(char *path);
     ~Webserv();
 };
-
+std::string cleaning_input(std::string str);
+std::vector<std::string> split_string(std::string str, char c);
 int msg_error(int status);
+std::string ft_read(std::string name);
 
 #endif

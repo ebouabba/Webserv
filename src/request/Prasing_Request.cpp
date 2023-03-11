@@ -5,7 +5,6 @@
 
 int Prasing_Request::check_first_line(std::string first_line)
 {
-    std::cout<<"-> "<<first_line<<std::endl;
     this->methode = strtok((char *)first_line.c_str(), " ");
     if (this->methode != "GET" && this->methode != "POST" && this->methode != "DELETE")
     {
@@ -15,7 +14,6 @@ int Prasing_Request::check_first_line(std::string first_line)
     }
     char *urlll = strtok(NULL, " ");
     this->url = urlll;
-    std::cout<<this->url<<std::endl;
     if (urlll[0] != '/')
     {
         std ::cout << "400 Bad Request" << std::endl;
@@ -73,6 +71,7 @@ void Prasing_Request::prasing_headr(std ::string headrs)
         std ::string value = res[i].substr(res[i].find(" "));
         mymap.insert(std ::pair<std ::string, std::string>(key, value));
     }
+    std :: cout << mymap["Host"] << std::endl;
     if (status == 200)
     {
         if (this->methode == "POST" && mymap["Content-Type"].empty())
@@ -87,7 +86,7 @@ void Prasing_Request::prasing_headr(std ::string headrs)
             status = 400;
             return;
         }
-        if (mymap["HOST"].empty())
+        if (mymap["Host"].empty())
         {
             std ::cout << "error om HOST !!" << std ::endl;
             status = 400;
@@ -102,22 +101,47 @@ void Prasing_Request::prasing_headr(std ::string headrs)
     }
 }
 
-Prasing_Request::Prasing_Request(std::string requst)
+Prasing_Request::Prasing_Request(std::string hedr)
 {
-    check_first_line(requst.substr(0, requst.find("\n")));
-    // prasing_headr(requst.substr(requst.find("\n", requst.length())));
-    std::cout << this->url << std::endl;
-}
+    if (!hedr.at(0))
+        return;
+    this->status = 200;
+    std ::string first;
+    std ::string hdr;
+    int i = 0;
+    while (i < hedr.length())
+    {
+        if (hedr.at(i) == '\r' || hedr.at(i) == '\n')
+            break;
+        i++;
+    }
 
-std::string Prasing_Request::getMethode()
-{
-    return (this->methode);
+    first = hedr.substr(0, i);
+    hdr = hedr.substr(0, hedr.find("\r\n\r\n"));
+    if (!check_first_line(first))
+        return;
+    prasing_headr(hdr);
+
+    if (this->status != 200)
+        return;
 }
-std::string Prasing_Request::getUrl()
+std ::string Prasing_Request::get_url()
 {
-    return (this->url);
+    return this->url;
 }
-std::string Prasing_Request::getBudy_url()
+std::map<std::string,std::string> Prasing_Request::get_mymap()
 {
-    return (this->budy_url);
+    return (mymap);
+}
+int Prasing_Request::get_status()
+{
+    return(status);
+}
+std::string Prasing_Request::get_method()
+{
+    return(methode);
+}
+std::string Prasing_Request::get_budy_url()
+{
+    return(budy_url);
 }
